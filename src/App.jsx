@@ -8,6 +8,7 @@ const App = () => {
       </header>
       <main>
         <Chatlog />
+        <ChatEntry />
         {/* Wave 01: Render one ChatEntry component
         Wave 02: Render ChatLog component */}
       </main>
