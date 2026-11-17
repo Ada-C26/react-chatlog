@@ -1,4 +1,6 @@
 import './App.css';
+import Chatlog from './components/Chatlog';
+import ChatEntry from './components/ChatEntry';
 
 const App = () => {
   return (
