@@ -1,17 +1,15 @@
 import './App.css';
-import ChatEntry from './components/ChatEntry';
+import ChatLog from './components/ChatLog';
 import messageData from './data/messages.json';
 
 const App = () => {
-  const entry = messageData[0];
-
   return (
     <div id="App">
       <header>
         <h1>Chat</h1>
       </header>
       <main>
-        <ChatEntry {...entry}></ChatEntry>
+        <ChatLog entries={messageData}></ChatLog>
       </main>
     </div>
   );
