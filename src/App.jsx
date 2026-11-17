@@ -1,14 +1,19 @@
 import './App.css';
+import ChatEntry from './components/ChatEntry';
+import data from './data/messages.json';
+import { useState } from 'react';
 
 const App = () => {
+
+  const [senderData, setSenderData] = useState(data);
+
   return (
     <div id="App">
       <header>
-        <h1>Application title</h1>
+        <h1>React Chat Log</h1>
       </header>
       <main>
-        {/* Wave 01: Render one ChatEntry component
-        Wave 02: Render ChatLog component */}
+        <ChatEntry sender={senderData[0].sender} body={senderData[0].body} timeStamp={senderData[0].timeStamp} />
       </main>
     </div>
   );
