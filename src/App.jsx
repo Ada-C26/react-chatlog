@@ -1,4 +1,3 @@
-
 import './App.css';
 import DATA from './data/messages.json';
 import ChatLog from './components/ChatLog';
@@ -36,6 +35,20 @@ const App = () => {
     () => initializeMessages(DATA)
   );
 
+  // Get unique participants
+  const participants = [...new Set(DATA.map(chat => chat.sender))];
+
+  // Store participant colors together
+  const [participantColors, setParticipantColors] = useState(() => {
+    return Object.fromEntries(
+      participants.map((sender, index) => [
+        sender,
+        index === 0 ? 'green' : 'blue',
+      ])
+    );
+  });
+
+  // Handle likes
   const handleLikeClicked = (id) => {
     setChatData(prevChatData => {
       return prevChatData.map(chat => {
@@ -46,12 +59,33 @@ const App = () => {
     });
   };
 
+  // Handle participant colors
+  const handleColorClicked = (sender, color) => {
+    setParticipantColors(prevColors => ({
+      ...prevColors,
+      [sender]: color,
+    }));
+  };
+
+  // Calculate total likes
   const totalLikes = countLikes(chatData);
 
   return (
     <div id="App">
       <header>
-        <h1>Application title</h1>
+        <h1>
+          Chat between{' '}
+          {participants.map((sender, index) => (
+            <span
+              key={sender}
+              className={participantColors[sender]}
+            >
+              {index > 0 && ' and'}
+              {sender}
+            </span>
+          ))}
+        </h1>
+
         <h2>{totalLikes} ❤️s</h2>
       </header>
 
