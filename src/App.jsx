@@ -25,10 +25,13 @@ const App = () => {
   // Step 3: Calculate total likes
   const totalLikes = entries.filter((entry) => entry.liked).length;
 
+  // Step 4: Get unique participant names
+  const participants = [...new Set(entries.map((entry) => entry.sender))];
+
   return (
     <div id="App">
       <header>
-        <h1>React Chat Log</h1>
+        <h1>{participants.join(' & ')}'s Chat</h1>
         <p>{totalLikes} ❤️s</p>
       </header>
 
