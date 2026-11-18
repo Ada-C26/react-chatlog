@@ -30,7 +30,7 @@ const App = () => {
   return (
     <div id="App">
       <header>
-        <h1>React Chat Log - {numberOfLikes}❤️s</h1>
+        <h1>React Chat Log - {numberOfLikes} ❤️s</h1>
       </header>
       <main>
         <ChatLog entries={senderData} toggleHeart={toggleHeart}/>
