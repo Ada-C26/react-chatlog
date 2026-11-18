@@ -8,14 +8,30 @@ const App = () => {
 
   const [senderData, setSenderData] = useState(data);
 
+  let numberOfLikes = 0;
+
+  const toggleHeart = (senderId) => {
+    const senders = senderData.map(sender => {
+      if (sender.id === senderId) {
+        return {...sender, liked: !sender.liked};
+      } else {
+        return sender;
+      }
+    });
+
+    setSenderData(senders);
+
+  };
+
+
+
   return (
     <div id="App">
       <header>
-        <h1>React Chat Log</h1>
+        <h1>React Chat Log - {numberOfLikes}❤️s</h1>
       </header>
       <main>
-        <ChatLog entries={senderData}/>
-        {/* <ChatEntry sender={senderData[0].sender} body={senderData[0].body} timeStamp={senderData[0].timeStamp}/> */}
+        <ChatLog entries={senderData} toggleHeart={toggleHeart}/>
       </main>
     </div>
   );

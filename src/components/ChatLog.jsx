@@ -3,31 +3,38 @@ import PropTypes from 'prop-types';
 import ChatEntry from './ChatEntry';
 
 
-const ChatLog = ({ entries }) => {
-    const senderComponents = entries.map((sender, index) => {
-        return (
-            <section key={sender.id} className="chat-log">
-                <ChatEntry id={sender.id} sender={sender.sender} body={sender.body} timeStamp={sender.timeStamp}/>
-            </section>
-        )
-    })
-    return (
-        <div>
-            {senderComponents}
-        </div>
-    )
+const ChatLog = ({ entries, toggleHeart }) => {
+const senderComponents = entries.map((entry) => {
+return (
+<ChatEntry 
+key={entry.id}
+id={entry.id} 
+sender={entry.sender} 
+body={entry.body} 
+timeStamp={entry.timeStamp} 
+liked={entry.liked} 
+toggleHeart={toggleHeart}/>
+)
+})
+return (
+<section className="chat-log">
+{senderComponents}
+</section>
+)
 }
 
 
 ChatLog.propTypes = {
-    entries: PropTypes.arrayOf(
-        PropTypes.shape({
-            id: PropTypes.number.isRequired,
-            sender: PropTypes.string.isRequired,
-            body: PropTypes.string.isRequired,
-            timeStamp: PropTypes.string.isRequired
-        })
-    )
+entries: PropTypes.arrayOf(
+PropTypes.shape({
+id: PropTypes.number.isRequired,
+sender: PropTypes.string.isRequired,
+body: PropTypes.string.isRequired,
+timeStamp: PropTypes.string.isRequired,
+liked: PropTypes.bool.isRequired
+})
+),
+toggleHeart: PropTypes.func.isRequired,
 
 };
 
