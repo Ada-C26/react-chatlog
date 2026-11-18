@@ -8,8 +8,6 @@ const App = () => {
 
   const [senderData, setSenderData] = useState(data);
 
-  let numberOfLikes = 0;
-
   const toggleHeart = (senderId) => {
     const senders = senderData.map(sender => {
       if (sender.id === senderId) {
@@ -20,10 +18,14 @@ const App = () => {
     });
 
     setSenderData(senders);
-
   };
 
-
+  let numberOfLikes = 0;
+  for (const sender of senderData) {
+    if (sender.liked === true) {
+      numberOfLikes += 1;
+    }
+  }
 
   return (
     <div id="App">
