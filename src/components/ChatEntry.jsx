@@ -4,7 +4,9 @@ import './ChatEntry.css';
 
 const ChatEntry = ({ id, sender, body, timeStamp, liked, onLike }) => {
   return (
-    <article className="chat-entry local">
+    <article
+      className={`chat-entry ${sender === 'Vladimir' ? 'local' : 'remote'}`}
+    >
       <h2 className="entry-name">{sender}</h2>
 
       <section className="entry-bubble">
