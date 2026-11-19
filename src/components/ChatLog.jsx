@@ -2,7 +2,9 @@ import './ChatLog.css';
 import PropTypes from 'prop-types';
 import ChatEntry from './ChatEntry';
 
-const ChatLog = ({ entries, onLikeToggle }) => {
+const ChatLog = (props) => {
+  const { entries, onLikeToggle, colors = {} } = props;
+
   // set the local sender to the first entry's sender
   const localSender = entries[0]?.sender;
 
@@ -13,6 +15,7 @@ const ChatLog = ({ entries, onLikeToggle }) => {
         key={entry.id}
         {...entry}
         isLocal={isLocal}
+        color={colors[entry.sender]}
         onLikeToggle={onLikeToggle}
       />
     );
@@ -36,6 +39,7 @@ ChatLog.propTypes = {
     })
   ).isRequired,
   onLikeToggle: PropTypes.func.isRequired,
+  colors: PropTypes.objectOf(PropTypes.string),
 };
 
 export default ChatLog;

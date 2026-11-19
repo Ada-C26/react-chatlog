@@ -4,7 +4,7 @@ import TimeStamp from './TimeStamp';
 import { LOCAL, REMOTE, LIKED_HEART, UNLIKED_HEART } from '../constants';
 
 const ChatEntry = (props) => {
-  const { id, sender, body, timeStamp, liked, onLikeToggle } = props;
+  const { id, sender, body, timeStamp, liked, color, onLikeToggle } = props;
   const side = props.isLocal ? LOCAL : REMOTE;
   const likeButton = liked ? LIKED_HEART : UNLIKED_HEART;
 
@@ -12,7 +12,7 @@ const ChatEntry = (props) => {
     <article className={`chat-entry ${side}`}>
       <h2 className="entry-name">{sender}</h2>
       <section className="entry-bubble">
-        <p>{body}</p>
+        <p className={color}>{body}</p>
         <div className="entry-footer">
           <p className="entry-time">
             <TimeStamp time={timeStamp} />
@@ -33,6 +33,7 @@ ChatEntry.propTypes = {
   timeStamp: PropTypes.string.isRequired,
   liked: PropTypes.bool,
   isLocal: PropTypes.bool.isRequired,
+  color: PropTypes.string,
   onLikeToggle: PropTypes.func.isRequired,
 };
 

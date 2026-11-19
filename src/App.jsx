@@ -3,17 +3,7 @@ import { useState } from 'react';
 import ChatLog from './components/ChatLog';
 import messages from './data/messages.json';
 import Header from './components/Header';
-import { PERSON_COLORS } from './constants';
-import { getPersonsInChat } from './helpers';
-
-// start each person with a default color: { Vladimir: 'green', Estragon: 'blue' }
-const getDefaultColors = (entries) => {
-  const colors = {};
-  getPersonsInChat(entries).forEach((person, index) => {
-    colors[person] = PERSON_COLORS[index % PERSON_COLORS.length];
-  });
-  return colors;
-};
+import { getDefaultColors } from './helpers';
 
 const App = () => {
   const [entries, setEntries] = useState(messages);
@@ -47,7 +37,11 @@ const App = () => {
         onColorChange={handleColorChange}
       />
       <main>
-        <ChatLog entries={entries} onLikeToggle={handleLikeToggle} />
+        <ChatLog
+          entries={entries}
+          colors={colors}
+          onLikeToggle={handleLikeToggle}
+        />
       </main>
     </div>
   );
