@@ -2,7 +2,18 @@ import PropTypes from 'prop-types';
 import ChatEntry from './ChatEntry';
 import './ChatLog.css';
 
-const ChatLog = ({entries, onLike, localColors, remoteColors}) => {
+const ChatLog = ({
+  entries,
+  onLike = () => {},
+  localColors = {
+    background: '#91ce29',
+    text: '#000000',
+  },
+  remoteColors = {
+    background: '#e7e5f7',
+    text: '#25243a',
+  },
+}) => {
   const localSender = entries[0]?.sender;
 
   return (
