@@ -1,12 +1,12 @@
-
 import { useState } from 'react';
 import ChatLog from './components/ChatLog';
+import ColorChoice from './components/ColorChoice';
 import messages from './data/messages.json';
 import './App.css';
 
 const App = () => {
-  // Store all messages in state
   const [entries, setEntries] = useState(messages);
+  const [color, setColor] = useState('#CFE3FF');
 
   // Change the liked status of one message
   const handleLike = (id) => {
@@ -37,16 +37,23 @@ const App = () => {
     return count;
   };
 
+  // Get the names of the chat participants
+  const participants = [...new Set(entries.map((entry) => entry.sender))];
+
   return (
     <div id="App">
       <header>
-        <h1>Chat Log</h1>
+        <h1>{participants.join(' & ')} Chat Log</h1>
         <p>{countLikes()} ❤️s</p>
+
+        <ColorChoice setColorCallback={setColor} />
       </header>
+
       <main>
         <ChatLog
           entries={entries}
           onLike={handleLike}
+          color={color}
         />
       </main>
     </div>
