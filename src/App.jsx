@@ -1,14 +1,47 @@
 import './App.css';
+import { useState } from 'react';
+import ChatLog from './components/ChatLog';
+import messages from './data/messages.json';
+import Header from './components/Header';
+import { getDefaultColors } from './helpers';
 
 const App = () => {
+  const [entries, setEntries] = useState(messages);
+  const [colors, setColors] = useState(getDefaultColors(messages));
+
+  // responsible for updating the liked of the data
+  // NOT writing in the file..
+  const updateLikedEntries = (id) => {
+    return entries.map((entry) => {
+      if (entry.id === id) {
+        return { ...entry, liked: !entry.liked };
+      }
+      return entry;
+    });
+  };
+
+  const handleLikeToggle = (id) => {
+    const updatedEntries = updateLikedEntries(id);
+    setEntries(updatedEntries);
+  };
+
+  const handleColorChange = (person, color) => {
+    setColors({ ...colors, [person]: color });
+  };
+
   return (
     <div id="App">
-      <header>
-        <h1>Application title</h1>
-      </header>
+      <Header
+        entries={entries}
+        colors={colors}
+        onColorChange={handleColorChange}
+      />
       <main>
-        {/* Wave 01: Render one ChatEntry component
-        Wave 02: Render ChatLog component */}
+        <ChatLog
+          entries={entries}
+          colors={colors}
+          onLikeToggle={handleLikeToggle}
+        />
       </main>
     </div>
   );

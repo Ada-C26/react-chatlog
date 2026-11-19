@@ -2,32 +2,11 @@
   background-color: #87cefa;
 }
 
-#App header {
-  background-color: #222;
-  color: #fff;
-  padding-bottom: 0.5rem;
-  position: fixed;
-  width: 100%;
-  z-index: 100;
-  text-align: center;
-  align-items: center;
-}
-
 #App main {
   padding-left: 2em;
   padding-right: 2em;
   padding-bottom: 5rem;
-  padding-top: 10rem;
-}
-
-#App h1 {
-  font-size: 1.5em;
-  text-align: center;
-  display: inline-block;
-}
-
-#App header section {
-  background-color: #e0ffff;
+  padding-top: 13rem;
 }
 
 #App .widget {

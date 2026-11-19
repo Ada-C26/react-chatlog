@@ -98,3 +98,15 @@ button {
 .chat-entry.remote .entry-bubble:hover::before {
   background-color: #a9f6f6;
 }
+
+/* Timestamp and like button on the same row */
+.chat-entry .entry-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.chat-entry .entry-footer .entry-time {
+  margin: 0 0.5rem 0 0;
+  text-align: left;
+}
