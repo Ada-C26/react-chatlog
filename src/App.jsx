@@ -1,67 +1,34 @@
-// import ChatEntry from './components/ChatEntry';
-// import messages from './data/messages.json';
-
-// function App() {
-//   const firstMessage = messages[0];
-
-//   return (
-//     <main>
-//       <h1>Chat Log</h1>
-
-//       <ChatEntry
-//         sender={firstMessage.sender}
-//         body={firstMessage.body}
-//         timeStamp={firstMessage.timeStamp}
-//       />
-//     </main>
-//   );
-// }
-
-// export default App;
-// import ChatLog from './components/ChatLog';
-// import messages from './data/messages.json';
-
-// function App() {
-//   return (
-//     <main>
-//       <h1>Chat between Vladimir and Estragon</h1>
-//       <ChatLog entries={messages} />
-//     </main>
-//   );
-// }
-
-// export default App;
 import { useState } from 'react';
 import ChatLog from './components/ChatLog';
 import messages from './data/messages.json';
+import './App.css';
+
 
 function App() {
   const [entries, setEntries] = useState(messages);
-
   const handleLike = (id) => {
     const updatedEntries = entries.map((entry) => {
       if (entry.id === id) {
         return { ...entry, liked: !entry.liked };
       }
-
       return entry;
     });
-
     setEntries(updatedEntries);
   };
-
-  const countLikes = () => {
-    return entries.filter((entry) => entry.liked).length;
+  const countLikes = (entriesList) => {
+    return entriesList.filter((entry) => entry.liked).length;
   };
-
-  return (
-    <main>
-      <h1>Chat between Vladimir and Estragon</h1>
-      <p>{countLikes()} ❤️s</p>
-
-      <ChatLog entries={entries} onLike={handleLike} />
-    </main>
-  );
+  const chat = ({ firstPerson, secondPerson }) => {
+    return (
+      <div>
+        <h1>Chat between {firstPerson} and {secondPerson}</h1>
+        <h2>{countLikes(entries)} ❤️s</h2>
+        <ChatLog entries={entries} onLike={handleLike} />
+      </div>
+    );
+  };
+  return chat({ firstPerson: 'Vladimir', secondPerson: 'Estragon' });
 }
+
 
 export default App;

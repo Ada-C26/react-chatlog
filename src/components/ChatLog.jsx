@@ -23,7 +23,7 @@
 
 // export default ChatLog;
 import PropTypes from 'prop-types';
-import ChatEntry from './ChatEntry';
+import ChatEntry from './ChatEntry.jsx';
 import './ChatLog.css';
 
 function ChatLog({ entries, onLike }) {
@@ -45,8 +45,16 @@ function ChatLog({ entries, onLike }) {
 }
 
 ChatLog.propTypes = {
-  entries: PropTypes.array.isRequired,
-  onLike: PropTypes.func.isRequired,
+  entries:PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      sender: PropTypes.string.isRequired,
+      body: PropTypes.string.isRequired,
+      timeStamp: PropTypes.string.isRequired,
+      liked: PropTypes.bool.isRequired,
+    })
+  ).isRequired,
+  onLike: PropTypes.func,
 };
 
 export default ChatLog;

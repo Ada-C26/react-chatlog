@@ -2,4 +2,6 @@
   margin: auto;
   max-width: 50rem;
   text-align: center;
+  display: flex;
+  flex-direction: column;
 }
