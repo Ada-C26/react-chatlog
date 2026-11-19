@@ -1,21 +1,51 @@
+import PropTypes from 'prop-types';
+import TimeStamp from './TimeStamp';
 import './ChatEntry.css';
 
-const ChatEntry = () => {
+const ChatEntry = ({
+  id,
+  sender,
+  body,
+  timeStamp,
+  liked,
+  onLike,
+  isLocal = true,
+  color,
+}) => {
   return (
-    // Replace the outer tag name with a semantic element that fits our use case
-    <replace-with-relevant-semantic-element className="chat-entry local">
-      <h2 className="entry-name">Replace with name of sender</h2>
-      <section className="entry-bubble">
-        <p>Replace with body of ChatEntry</p>
-        <p className="entry-time">Replace with TimeStamp component</p>
-        <button className="like">🤍</button>
+    <article className={`chat-entry ${isLocal ? 'local' : 'remote'}`}>
+      <h2 className="entry-name">{sender}</h2>
+
+      <section
+        className="entry-bubble"
+        style={isLocal && color ? { backgroundColor: color } : undefined}
+      >
+        <p>{body}</p>
+
+        <p className="entry-time">
+          <TimeStamp time={timeStamp} />
+        </p>
+
+        <button
+          className="like"
+          onClick={() => onLike?.(id)}
+        >
+          {liked ? '❤️' : '🤍'}
+        </button>
       </section>
-    </replace-with-relevant-semantic-element>
+    </article>
   );
 };
 
 ChatEntry.propTypes = {
-  // Fill with correct proptypes
+  id: PropTypes.number,
+  sender: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
+  timeStamp: PropTypes.string.isRequired,
+  liked: PropTypes.bool,
+  onLike: PropTypes.func,
+  isLocal: PropTypes.bool,
+  color: PropTypes.string,
 };
 
 export default ChatEntry;
