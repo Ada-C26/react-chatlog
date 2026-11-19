@@ -4,7 +4,7 @@ import ChatEntry from './ChatEntry';
 
 const ChatLog = ({ entries, onLikeToggle }) => {
   // set the local sender to the first entry's sender
-  const localSender = entries[0].sender;
+  const localSender = entries[0]?.sender;
 
   const chatEntryComponents = entries.map((entry) => {
     const isLocal = entry.sender === localSender;

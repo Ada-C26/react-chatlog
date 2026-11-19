@@ -3,7 +3,7 @@ import { useState } from 'react';
 import ChatLog from './components/ChatLog';
 import messages from './data/messages.json';
 import { LIKED_HEART } from './constants';
-import { getCountLikes } from './helpers';
+import { getCountLikes, getPersonsInChat } from './helpers';
 
 const App = () => {
   const [entries, setEntries] = useState(messages);
@@ -27,7 +27,7 @@ const App = () => {
   return (
     <div id="App">
       <header>
-        <h1>Chat Log</h1>
+        <h1>Chat between {getPersonsInChat(entries).join(' and ')}</h1>
         <h2>{getCountLikes(entries)} {LIKED_HEART}s</h2>
       </header>
       <main>
