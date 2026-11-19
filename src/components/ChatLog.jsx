@@ -2,12 +2,12 @@ import PropTypes from 'prop-types';
 import './ChatLog.css';
 import ChatEntry from './ChatEntry';
 
-const ChatLog = ({entries}) => {
+const ChatLog = (props) => {
+  const chatEntryComponents = props.entries.map( (entry) => <ChatEntry {...entry}></ChatEntry> );
+
   return (
     <div className="chat-log">
-      {entries.map((entry) => (
-        <ChatEntry {...entry}></ChatEntry>
-      ))}
+      {chatEntryComponents}
     </div>
   );
 };
