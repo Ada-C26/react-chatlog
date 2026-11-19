@@ -2,24 +2,31 @@ import './ChatLog.css';
 import PropTypes from 'prop-types';
 import ChatEntry from './ChatEntry';
 
-const ChatLog = ({ messages }) => {
-  const localSender = messages[0]?.sender;
+const ChatLog = ({ entries, onLikeToggle }) => {
+  // set the local sender to the first entry's sender
+  const localSender = entries[0].sender;
 
-  const ChatEntryComponent = messages.map((message) => {
-    const isLocal = message.sender === localSender;
-    return (<ChatEntry key={message.id} {...message} isLocal={isLocal} />);
+  const chatEntryComponents = entries.map((entry) => {
+    const isLocal = entry.sender === localSender;
+    return (
+      <ChatEntry
+        key={entry.id}
+        {...entry}
+        isLocal={isLocal}
+        onLikeToggle={onLikeToggle}
+      />
+    );
   });
 
   return (
     <section className="chat-log">
-      {ChatEntryComponent}
+      {chatEntryComponents}
     </section>
   );
 };
 
-
 ChatLog.propTypes = {
-  messages: PropTypes.arrayOf(
+  entries: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       sender: PropTypes.string.isRequired,
@@ -28,6 +35,7 @@ ChatLog.propTypes = {
       liked: PropTypes.bool,
     })
   ).isRequired,
+  onLikeToggle: PropTypes.func.isRequired,
 };
 
 export default ChatLog;
