@@ -18,14 +18,48 @@
 // }
 
 // export default App;
+// import ChatLog from './components/ChatLog';
+// import messages from './data/messages.json';
+
+// function App() {
+//   return (
+//     <main>
+//       <h1>Chat between Vladimir and Estragon</h1>
+//       <ChatLog entries={messages} />
+//     </main>
+//   );
+// }
+
+// export default App;
+import { useState } from 'react';
 import ChatLog from './components/ChatLog';
 import messages from './data/messages.json';
 
 function App() {
+  const [entries, setEntries] = useState(messages);
+
+  const handleLike = (id) => {
+    const updatedEntries = entries.map((entry) => {
+      if (entry.id === id) {
+        return { ...entry, liked: !entry.liked };
+      }
+
+      return entry;
+    });
+
+    setEntries(updatedEntries);
+  };
+
+  const countLikes = () => {
+    return entries.filter((entry) => entry.liked).length;
+  };
+
   return (
     <main>
       <h1>Chat between Vladimir and Estragon</h1>
-      <ChatLog entries={messages} />
+      <p>{countLikes()} ❤️s</p>
+
+      <ChatLog entries={entries} onLike={handleLike} />
     </main>
   );
 }
