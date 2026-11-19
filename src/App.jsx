@@ -2,11 +2,22 @@ import './App.css';
 import { useState } from 'react';
 import ChatLog from './components/ChatLog';
 import messages from './data/messages.json';
-import { LIKED_HEART } from './constants';
-import { getCountLikes, getPersonsInChat } from './helpers';
+import Header from './components/Header';
+import { PERSON_COLORS } from './constants';
+import { getPersonsInChat } from './helpers';
+
+// start each person with a default color: { Vladimir: 'green', Estragon: 'blue' }
+const getDefaultColors = (entries) => {
+  const colors = {};
+  getPersonsInChat(entries).forEach((person, index) => {
+    colors[person] = PERSON_COLORS[index % PERSON_COLORS.length];
+  });
+  return colors;
+};
 
 const App = () => {
   const [entries, setEntries] = useState(messages);
+  const [colors, setColors] = useState(getDefaultColors(messages));
 
   // responsible for updating the liked of the data
   // NOT writing in the file..
@@ -24,12 +35,17 @@ const App = () => {
     setEntries(updatedEntries);
   };
 
+  const handleColorChange = (person, color) => {
+    setColors({ ...colors, [person]: color });
+  };
+
   return (
     <div id="App">
-      <header>
-        <h1>Chat between {getPersonsInChat(entries).join(' and ')}</h1>
-        <h2>{getCountLikes(entries)} {LIKED_HEART}s</h2>
-      </header>
+      <Header
+        entries={entries}
+        colors={colors}
+        onColorChange={handleColorChange}
+      />
       <main>
         <ChatLog entries={entries} onLikeToggle={handleLikeToggle} />
       </main>
