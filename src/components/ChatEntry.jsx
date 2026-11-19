@@ -1,7 +1,7 @@
 import './ChatEntry.css';
-import propTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import TimeStamp from './TimeStamp';
-const ChatEntry = ({sender, body, timeStamp}) => {
+const ChatEntry = ({id, sender, body, timeStamp, liked}) => {
   return (
     // Replace the outer tag name with a semantic element that fits our use case
     <div className="chat-entry local">
@@ -18,11 +18,11 @@ const ChatEntry = ({sender, body, timeStamp}) => {
 };
 
 ChatEntry.propTypes = {
-  // id: propTypes.number.isRequired,
-  sender: propTypes.string.isRequired,
-  body: propTypes.string.isRequired,
-  timeStamp: propTypes.string.isRequired,
-  // liked: propTypes.bool.isRequired
+  // id: PropTypes.number.isRequired,
+  sender: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
+  timeStamp: PropTypes.string.isRequired,
+  // liked: PropTypes.bool.isRequired
 };
 
 export default ChatEntry;
