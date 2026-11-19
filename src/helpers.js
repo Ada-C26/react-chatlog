@@ -16,6 +16,10 @@ export const getDefaultColors = (entries) => {
   getPersonsInChat(entries).forEach((person, index) => {
     colors[person] = PERSON_COLORS[index];
   });
-  
+
   return colors;
 };
+
+
+
+
