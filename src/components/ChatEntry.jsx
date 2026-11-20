@@ -2,7 +2,7 @@ import './ChatEntry.css';
 import TimeStamp from './TimeStamp';
 import PropTypes from 'prop-types';
 
-const ChatEntry = ({ sender, body, timeStamp }) => {
+const ChatEntry = ({ id, sender, body, timeStamp, liked, onToggleHeart }) => {
   return (
     // Replace the outer tag name with a semantic element that fits our use case
     <div className="chat-entry local">
@@ -12,7 +12,9 @@ const ChatEntry = ({ sender, body, timeStamp }) => {
         <p className="entry-time">
           <TimeStamp time={timeStamp} />
         </p>
-        <button className="like">🤍</button>
+        <button className="like" onClick={() => onToggleHeart(id)}>
+          {liked ? '❤️' : '🤍'}
+        </button>
       </section>
     </div>
   );
@@ -20,11 +22,9 @@ const ChatEntry = ({ sender, body, timeStamp }) => {
 
 ChatEntry.propTypes = {
   // Fill with correct proptypes
-  message: PropTypes.shape({
-    sender: PropTypes.string.isRequired,
-    body: PropTypes.string.isRequired,
-    timeStamp: PropTypes.string.isRequired,
-  }).isRequired,
+  sender: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
+  timeStamp: PropTypes.string.isRequired,
 };
 
 export default ChatEntry;
