@@ -1,24 +1,18 @@
 import './App.css';
-import ChatEntry from './components/ChatEntry';
+import ChatLog from './components/ChatLog';
+import messages from './data/messages.json';
 
 const App = () => {
-
-  const chatEntryData = {
-    id: 1,
-    sender:'Vladimir',
-    body:'why are you arguing with me',
-    timeStamp:'2018-05-29T22:49:06+00:00',
-    liked: false
-  };
 
   return (
     <div id="App">
       <header>
-        <h1>Application title</h1>
+        <h1>Chat Between Vladimir and Estragon</h1>
+        <h2>0 ❤️s</h2>
       </header>
       <main>
-        {/* Wave 01: Render one ChatEntry component*/}
-        <ChatEntry sender={chatEntryData.sender} body={chatEntryData.body} timeStamp={chatEntryData.timeStamp}/>
+        {/* Wave 02: Render ChatLog component*/}
+        <ChatLog entries={messages}/>
       </main>
     </div>
   );
