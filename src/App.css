@@ -40,6 +40,13 @@
   padding-right: 1em;
 }
 
+#App .widget button {
+  font-size: 2em;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
 #App #heartWidget {
   font-size: 1.5em;
   margin: 1em

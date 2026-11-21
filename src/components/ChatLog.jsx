@@ -1,8 +1,8 @@
-import './ChatLog.css';
-import PropTypes from 'prop-types';
-import ChatEntry from './ChatEntry';
+import "./ChatLog.css";
+import PropTypes from "prop-types";
+import ChatEntry from "./ChatEntry";
 
-const ChatLog = ({ entries, toggleHeart }) => {
+const ChatLog = ({ entries, toggleHeart, vladimirColor, estragonColor }) => {
   const senderComponents = entries.map((entry) => {
     return (
       <ChatEntry
@@ -13,6 +13,8 @@ const ChatLog = ({ entries, toggleHeart }) => {
         timeStamp={entry.timeStamp}
         liked={entry.liked}
         toggleHeart={toggleHeart}
+        vladimirColor={vladimirColor}
+        estragonColor={estragonColor}
       />
     );
   });
@@ -31,6 +33,8 @@ ChatLog.propTypes = {
   ).isRequired,
 
   toggleHeart: PropTypes.func.isRequired,
+  vladimirColor: PropTypes.string.isRequired,
+  estragonColor: PropTypes.string.isRequired,
 };
 
 export default ChatLog;
