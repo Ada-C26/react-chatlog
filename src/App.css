@@ -3,7 +3,7 @@
 }
 
 #App header {
-  background-color: #222;
+  background-color: #3c6c8e;
   color: #fff;
   padding-bottom: 0.5rem;
   position: fixed;
@@ -11,6 +11,8 @@
   z-index: 100;
   text-align: center;
   align-items: center;
+  display: flex;
+  flex-direction: column;
 }
 
 #App main {
@@ -20,21 +22,21 @@
   padding-top: 10rem;
 }
 
-#App h1 {
-  font-size: 1.5em;
-  text-align: center;
+#App header h1 {
+  flex: 1;
   display: inline-block;
-}
-
-#App header h2 {
-  text-align: center;
-  background-color: #3c6c8e;
-  padding: 0.5em;
-  margin: 0;
+  font-size: 1.8em;
 }
 
 #App header section {
-  background-color: #e0ffff;
+  background-color: #9fdddd;
+  width: 100%;
+  flex: 1;
+  font-size: 0.8em;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #App .widget {
