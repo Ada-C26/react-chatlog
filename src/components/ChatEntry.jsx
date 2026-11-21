@@ -1,25 +1,25 @@
-import './ChatEntry.css';
-import PropTypes from 'prop-types';
-import TimeStamp from './TimeStamp';
-
+import "./ChatEntry.css";
+import PropTypes from "prop-types";
+import TimeStamp from "./TimeStamp";
 
 const ChatEntry = ({ sender, body, timeStamp, toggleHeart, id, liked }) => {
-
   const heartClicked = () => {
     toggleHeart(id);
-  }
+  };
 
-  // const heartColor = liked ? '❤️' : '🤍';
-
-
+  const chatEntrySender = sender === "Estragon" ? "remote" : "local";
 
   return (
-    <article className="chat-entry local">
+    <article className={`chat-entry ${chatEntrySender}`}>
       <h2 className="entry-name">{sender}</h2>
       <section className="entry-bubble">
         <p>{body}</p>
-        <p className="entry-time"><TimeStamp time={timeStamp}/></p>
-        <button className="like" onClick={heartClicked}>{liked ? '❤️' : '🤍'}</button>
+        <p className="entry-time">
+          <TimeStamp time={timeStamp} />
+        </p>
+        <button className="like" onClick={heartClicked}>
+          {liked ? "❤️" : "🤍"}
+        </button>
       </section>
     </article>
   );
@@ -31,7 +31,7 @@ ChatEntry.propTypes = {
   body: PropTypes.string.isRequired,
   timeStamp: PropTypes.string.isRequired,
   liked: PropTypes.bool.isRequired,
-  toggleHeart: PropTypes.func.isRequired
+  toggleHeart: PropTypes.func.isRequired,
 };
 
 export default ChatEntry;
