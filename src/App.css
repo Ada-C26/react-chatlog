@@ -3,7 +3,7 @@
 }
 
 #App header {
-  background-color: #222;
+  background-color: #3c6c8e;
   color: #fff;
   padding-bottom: 0.5rem;
   position: fixed;
@@ -11,6 +11,8 @@
   z-index: 100;
   text-align: center;
   align-items: center;
+  display: flex;
+  flex-direction: column;
 }
 
 #App main {
@@ -20,14 +22,21 @@
   padding-top: 10rem;
 }
 
-#App h1 {
-  font-size: 1.5em;
-  text-align: center;
+#App header h1 {
+  flex: 1;
   display: inline-block;
+  font-size: 1.8em;
 }
 
 #App header section {
-  background-color: #e0ffff;
+  background-color: #9fdddd;
+  width: 100%;
+  flex: 1;
+  font-size: 0.8em;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #App .widget {
@@ -35,40 +44,40 @@
   line-height: 0.5em;
   border-radius: 10px;
   color: black;
-  font-size:0.8em;
+  font-size: 0.8em;
   padding-left: 1em;
   padding-right: 1em;
 }
 
 #App #heartWidget {
   font-size: 1.5em;
-  margin: 1em
+  margin: 1em;
 }
 
 #App span {
-  display: inline-block
+  display: inline-block;
 }
 
 .red {
-  color: #b22222
+  color: #b22222;
 }
 
 .orange {
-  color: #e6ac00
+  color: #e6ac00;
 }
 
 .yellow {
-  color: #e6e600
+  color: #e6e600;
 }
 
 .green {
-  color: green
+  color: green;
 }
 
 .blue {
-  color: blue
+  color: blue;
 }
 
 .purple {
-  color: purple
+  color: purple;
 }
