@@ -1,32 +1,8 @@
-// import PropTypes from 'prop-types';
-// import ChatEntry from './ChatEntry';
-// import './ChatLog.css';
-
-// function ChatLog({ entries }) {
-//   return (
-//     <section className="chat-log">
-//       {entries.map((entry) => (
-//         <ChatEntry
-//           key={entry.id}
-//           sender={entry.sender}
-//           body={entry.body}
-//           timeStamp={entry.timeStamp}
-//         />
-//       ))}
-//     </section>
-//   );
-// }
-
-// ChatLog.propTypes = {
-//   entries: PropTypes.array.isRequired,
-// };
-
-// export default ChatLog;
 import PropTypes from 'prop-types';
 import ChatEntry from './ChatEntry.jsx';
 import './ChatLog.css';
 
-function ChatLog({ entries, onLike }) {
+function ChatLog({ entries, onLike, localSender }) {
   return (
     <section className="chat-log">
       {entries.map((entry) => (
@@ -38,6 +14,7 @@ function ChatLog({ entries, onLike }) {
           timeStamp={entry.timeStamp}
           liked={entry.liked}
           onLike={onLike}
+          localSender={localSender}
         />
       ))}
     </section>
@@ -54,7 +31,8 @@ ChatLog.propTypes = {
       liked: PropTypes.bool.isRequired,
     })
   ).isRequired,
-  onLike: PropTypes.func,
+  onLike: PropTypes.func.isRequired,
+  localSender: PropTypes.string.isRequired,
 };
 
 export default ChatLog;

@@ -2,9 +2,10 @@ import './ChatEntry.css';
 import PropTypes from 'prop-types';
 import TimeStamp from './TimeStamp';
 
-const ChatEntry = ({ sender, body, timeStamp, liked, onLike, id }) => {
+const ChatEntry = ({ sender, body, timeStamp, liked, onLike, localSender,id }) => {
+  const messageType = sender === localSender ? 'local' : 'remote';
   return (
-    <article className="chat-entry local">
+    <article className={`chat-entry ${messageType}`}>
       <h2 className="entry-name">{sender}</h2>
       <section className="entry-bubble">
         <p>{body}</p>
@@ -23,6 +24,7 @@ ChatEntry.propTypes = {
   timeStamp: PropTypes.string.isRequired,
   liked: PropTypes.bool.isRequired,
   onLike: PropTypes.func.isRequired,
+  localSender: PropTypes.string.isRequired,
 };
 
 export default ChatEntry;

@@ -37,7 +37,7 @@ button {
 }
 
 .chat-entry .entry-time {
-  color: #e4dde6;
+  color: #6478a8;
   font-size: x-small;
   margin-bottom: 0.1rem;
   margin-right: 0.5rem;
@@ -64,7 +64,7 @@ button {
 }
 
 .chat-entry.local .entry-bubble::before {
-  background-color: #ffffe0;
+  background-color: #356183;
   left: -18px;
 }
 
@@ -78,7 +78,7 @@ button {
 }
 
 .chat-entry.remote .entry-bubble {
-  background-color: #e0ffff;
+  background-color: #c67c4b;
   margin-left: auto;
   margin-right: 0;
 }
@@ -92,7 +92,7 @@ button {
 }
 
 .chat-entry.remote .entry-bubble::before {
-  background-color: #e0ffff;
+  background-color: #3d6666;
   right: -18px;
 }
 
