@@ -19,6 +19,8 @@ ChatEntry.propTypes = {
   sender: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
   timeStamp: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
+  liked: PropTypes.bool.isRequired,
 };
 
 export default ChatEntry;
@@ -32,4 +34,9 @@ Wave 01: Presentational Component (ChatEntry)
 - replace placeholder with <article>
 - add props {sender}, {body}, and {timeStamp}
 - fill in ChatEntry.prop types with propName: PropTypes.string.isRequired,
+ */
+
+/*
+Wave 02: Container Component (ChatLog)
+- add id and liked to ChatEntry.propTypes
  */

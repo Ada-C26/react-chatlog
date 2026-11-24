@@ -1,6 +1,6 @@
 import './App.css';
 import messages from './data/messages.json';
-import ChatEntry from './components/ChatEntry';
+import ChatLog from './components/ChatLog';
 
 const App = () => {
   return (
@@ -9,10 +9,8 @@ const App = () => {
         <h1>Application title</h1>
       </header>
       <main>
-        <ChatEntry
-          sender={messages[0].sender}
-          body={messages[0].body}
-          timeStamp={messages[0].timeStamp}
+        <ChatLog
+          entries={messages}
         />
       </main>
     </div>
@@ -26,4 +24,20 @@ export default App;
 Wave 01 Presentational Component (Chat Entry)
 - import messages and ChatEntry
 - render one ChatEntry <ChatEntry propName={messages[0].propName}/> to test
+ */
+
+/*
+Wave 02 Container Component (Chat Log)
+- import ChatLog
+- remove ChatEntry import
+- replace the test ChatEntry
+  <ChatEntry
+          sender={messages[0].sender}
+          body={messages[0].body}
+          timeStamp={messages[0].timeStamp}
+  />
+  with the actual chat
+  <ChatLog
+          entries={messages}
+  />
  */
