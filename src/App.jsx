@@ -23,6 +23,7 @@ export default App;
 
 
 /*
+Making sure wave 01 is pushed
 Wave 01 Presentational Component (Chat Entry)
 - import messages and ChatEntry
 - render one ChatEntry <ChatEntry propName={messages[0].propName}/> to test
