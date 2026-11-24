@@ -1,0 +1,19 @@
+
+.color-choice {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.color-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.color-dot:hover {
+    transform: scale(1.2);
+}

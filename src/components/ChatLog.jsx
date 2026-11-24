@@ -2,7 +2,7 @@ import './ChatLog.css';
 import PropTypes from 'prop-types';
 import ChatEntry from './ChatEntry';
 
-const ChatLog = ({entries, onLike}) => {
+const ChatLog = ({entries, onLike, localColor, remoteColor}) => {
   return (
     <div className="chat-log">
       {entries.map((entry) => (
@@ -14,6 +14,8 @@ const ChatLog = ({entries, onLike}) => {
           timeStamp={entry.timeStamp}
           liked={entry.liked}
           onLike={onLike}
+          localColor={localColor}
+          remoteColor={remoteColor}
         />
       ))}
     </div>
@@ -32,5 +34,7 @@ ChatLog.propTypes = {
     })
   ).isRequired,
   onLike: PropTypes.func.isRequired,
+  localColor: PropTypes.string.isRequired,
+  remoteColor: PropTypes.string.isRequired,
 };
 export default ChatLog;
