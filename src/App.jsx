@@ -1,8 +1,10 @@
 import './App.css';
 import messages from './data/messages.json';
 import ChatLog from './components/ChatLog';
+import { useState } from 'react';
 
 const App = () => {
+  const [entries, setEntries] = useState(messages);
   return (
     <div id="App">
       <header>
@@ -41,3 +43,11 @@ Wave 02 Container Component (Chat Log)
           entries={messages}
   />
  */
+
+  /*
+Wave 03: Event Handling and Lifting Up state (Likes)
+- import useState
+- Create state from the JSON
+  - const [entries, setEntries] = useSTate(messages);
+- Pass the state to ChatLog instead of teh raw JSON.... Where I left off.
+*/
