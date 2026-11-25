@@ -1,21 +1,29 @@
 import './ChatEntry.css';
+import PropTypes from 'prop-types'
+import TimeStamp from './TimeStamp.jsx'
 
-const ChatEntry = () => {
+const ChatEntry = (entry) => {
+  const Likedcolor = entry.liked ? '❤️' : '🤍';
+
   return (
-    // Replace the outer tag name with a semantic element that fits our use case
-    <replace-with-relevant-semantic-element className="chat-entry local">
-      <h2 className="entry-name">Replace with name of sender</h2>
+    <article className="chat-entry local">
+      <h2 className="entry-name">{entry.sender}</h2>
       <section className="entry-bubble">
-        <p>Replace with body of ChatEntry</p>
-        <p className="entry-time">Replace with TimeStamp component</p>
-        <button className="like">🤍</button>
+        <p>{entry.body}</p>
+        <p className="entry-time"> <TimeStamp time={entry.timeStamp} /></p>
+        <button className="like" onClick= {() => entry.toggleLike(entry.id)}>{Likedcolor}</button>
       </section>
-    </replace-with-relevant-semantic-element>
+    </article>
   );
 };
 
 ChatEntry.propTypes = {
-  // Fill with correct proptypes
+  id: PropTypes.number.isRequired,
+  sender: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
+  timeStamp: PropTypes.string.isRequired,
+  liked: PropTypes.bool.isRequired,
+  toggleLike: PropTypes.func,
 };
 
 export default ChatEntry;
