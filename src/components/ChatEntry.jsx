@@ -1,21 +1,38 @@
 import './ChatEntry.css';
+import TimeStamp from './TimeStamp';
+import PropTypes from 'prop-types';
+import { useState } from 'react';
 
-const ChatEntry = () => {
+const ChatEntry = ({ id, sender, body, timeStamp, onHeartClick }) => {
+  const heartClicked = () => {
+    const likedMultiple = !liked;
+    setLiked(likedMultiple);
+    onHeartClick(id, likedMultiple);
+  };
+
+  const [liked, setLiked] = useState(false);
+  const buttonText = liked ? '❤️' : '🤍';
+
   return (
-    // Replace the outer tag name with a semantic element that fits our use case
-    <replace-with-relevant-semantic-element className="chat-entry local">
-      <h2 className="entry-name">Replace with name of sender</h2>
+    <div className="chat-entry local">
+      <h2 className="entry-name">{sender}</h2>
       <section className="entry-bubble">
-        <p>Replace with body of ChatEntry</p>
-        <p className="entry-time">Replace with TimeStamp component</p>
-        <button className="like">🤍</button>
+        <p>{body}</p>
+        <p className="entry-time">
+          <TimeStamp time={timeStamp} />
+        </p>
+        <button className="like" onClick={heartClicked}>
+          {buttonText}
+        </button>
       </section>
-    </replace-with-relevant-semantic-element>
+    </div>
   );
 };
 
 ChatEntry.propTypes = {
-  // Fill with correct proptypes
+  sender: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
+  timeStamp: PropTypes.string.isRequired,
 };
 
 export default ChatEntry;
