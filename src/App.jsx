@@ -5,7 +5,7 @@ import messageData from './data/messages.json';
 import ColorChoice from './components/ColorChoice';
 
 const App = () => {
-  const message = messageData[0];
+  
   const [chatMsg, setChatMsg] = useState(messageData);
   const [localColor,setLocalColor] = useState('black');
   const [remoteColor,setRemoteColor] = useState('black');
