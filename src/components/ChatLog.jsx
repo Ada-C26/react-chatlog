@@ -2,7 +2,7 @@ import './ChatLog.css';
 import PropTypes from 'prop-types';
 import ChatEntry from './ChatEntry.jsx';
 
-const ChatLog = ({ entries, onLikeToggle }) => {
+const ChatLog = ({ entries, onLikeToggle, localSender }) => {
   // map entries to ChatEntry components
   const chatEntries = entries.map((entry) => (
     <ChatEntry
@@ -13,6 +13,7 @@ const ChatLog = ({ entries, onLikeToggle }) => {
       timeStamp={entry.timeStamp}
       liked={entry.liked}
       onLikeToggle={onLikeToggle}
+      localSender={localSender}
     />
   ));
 
@@ -32,6 +33,7 @@ ChatLog.propTypes = {
     })
   ).isRequired,
   onLikeToggle: PropTypes.func,
+  localSender: PropTypes.string,
 };
 
 export default ChatLog;
@@ -55,4 +57,9 @@ Wave 03 Event Handling and Lifting Up State (Likes)
 - for the new onLikeToggle in app, needs to be passed into ChatLog with entries
 - and then added to the Chat Entry map entries
 - and add to propTypes underneath .isRequired... onLikeToggle: PropTypes.func
+*/
+
+/*
+ENHANCEMENTS
+- add localSender to ChatLog props and ChatEntry maps and ChatLog.PropTypes
 */

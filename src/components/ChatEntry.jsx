@@ -2,9 +2,12 @@ import './ChatEntry.css';
 import PropTypes from 'prop-types';
 import TimeStamp from './TimeStamp';
 
-const ChatEntry = ({id, sender, body, timeStamp, liked, onLikeToggle}) => {
+const ChatEntry = ({id, sender, body, timeStamp, liked, onLikeToggle, localSender}) => {
+
+  const side = sender === localSender ? 'local' : 'remote';
+
   return (
-    <article className="chat-entry local">
+    <article className={`chat-entry ${side}`}>
       <h2 className="entry-name">{sender}</h2>
       <section className="entry-bubble">
         <p>{body}</p>
@@ -24,6 +27,7 @@ ChatEntry.propTypes = {
   id: PropTypes.number.isRequired,
   liked: PropTypes.bool.isRequired,
   onLikeToggle: PropTypes.func,
+  localSender: PropTypes.string,
 };
 
 export default ChatEntry;
@@ -50,4 +54,11 @@ Wave 03: Event Handling and Lifting Up State (Likes)
 - change button to include onClick={() => onLikeToggle(id)}
 - In the button show the hart with a ternary {liked ? '❤️' : '🤍'}
 - add the onLikeToggle to PropTypes
+*/
+
+/*
+ENHANCEMENTS
+- add localSender to ChatEntry params
+- change className= chat-entry local to chat entry {side}
+- add local Sender to PropTypes
 */

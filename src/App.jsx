@@ -19,6 +19,8 @@ const App = () => {
     return entries.filter((entry) => entry.liked).length;
   };
 
+  const localSender = messages[0].sender;
+
   return (
     <div id="App">
       <header>
@@ -31,6 +33,7 @@ const App = () => {
         <ChatLog
           entries={entries}
           onLikeToggle={toggleLike}
+          localSender={localSender}
         />
       </main>
     </div>
@@ -76,3 +79,10 @@ Wave 03: Event Handling and Lifting Up state (Likes)
 - call the function in header h2, that in the N heart s format. <h2 className="widget" id="heartWidget">{countLikes()} ❤️s</h2>
 - in Chatlog change entries{messages} to entries={entries}
 */
+
+/*
+Enhancements
+- decide who's local and pass it down with a const localSender
+- Then put the constant inside App under countLikes function
+- Add it to ChatLog props
+ */
