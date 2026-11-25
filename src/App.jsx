@@ -19,10 +19,13 @@ const App = () => {
     return entry.liked ? total + 1 : total;
   }, 0);
 
+  const userNames = [...new Set(entries.map((entry) => entry.sender))];
+
   return (
     <div id="App">
       <header>
-        <h1>Chat Log</h1>
+        <h1>Chat between {userNames.join(', ')}</h1>
+        <p className="total-likes">Total Likes: {totalLikes}</p>
       </header>
       <main>
         <ChatLog entries={entries} onLike={handleLike} />
