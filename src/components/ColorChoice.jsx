@@ -7,10 +7,9 @@ const ColorChoice = ({setColorCallback}) =>{
 
     <div className="color-choice">
       {colors.map((color) => (
-        <button 
+        <button
           key={color}
-          className="color-dot"
-          style={{ backgroundColor : color }}
+          className={`color-dot ${color}`}
           onClick={() => setColorCallback(color)}
         />
       )

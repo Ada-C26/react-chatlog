@@ -6,11 +6,12 @@ const ChatEntry = ({id, sender, body, timeStamp, liked, onLike, localColor, remo
   const isLocal = sender === 'Vladimir';
 
   return (
-    // Replace the outer tag name with a semantic element that fits our use case
+
     <div className={`chat-entry ${isLocal ? 'local' : 'remote'}`}>
       <h2 className="entry-name">{sender}</h2>
+
       <section className="entry-bubble">
-        <p style = {{color: isLocal ? localColor : remoteColor}}>
+        <p className={isLocal ? localColor : remoteColor}>
           {body}
         </p>
         <p className="entry-time">
@@ -20,6 +21,7 @@ const ChatEntry = ({id, sender, body, timeStamp, liked, onLike, localColor, remo
           {liked ? '❤️': '🤍'}
         </button>
       </section>
+
     </div>
   );
 };

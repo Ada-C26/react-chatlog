@@ -5,17 +5,16 @@ import messageData from './data/messages.json';
 import ColorChoice from './components/ColorChoice';
 
 const App = () => {
-  
   const [chatMsg, setChatMsg] = useState(messageData);
   const [localColor,setLocalColor] = useState('black');
   const [remoteColor,setRemoteColor] = useState('black');
 
   const handleLike = (id) => {
     setChatMsg((messages) =>
-      messages.map((message) => 
+      messages.map((message) =>
         id === message.id
           ?{...message, liked: !message.liked}
-          : message) 
+          : message)
     );
   };
 
@@ -25,14 +24,22 @@ const App = () => {
 
   return (
     <div id="App">
-      <header className='app-header'>
-        <h1>Chat between Vladimir and Estragon 💬</h1>
+      <header className="app-header">
+        <h1>
+          Chat between{' '}
+          <span className={localColor}>Vladimir</span>
+          {' and '}
+          <span className={remoteColor}>Estragon</span>
+          {' 💬'}
+        </h1>
       </header>
-      
+
       <section className='color-bar'>
 
         <div className="local-colors">
-          <h2>Vladimir's color:</h2>
+          <h2>
+            <span className={localColor}>Vladimir's color:</span>
+          </h2>
           <ColorChoice setColorCallback={setLocalColor} />
         </div>
 
@@ -41,15 +48,17 @@ const App = () => {
         </div>
 
         <div className="remote-colors">
-          <h2>Estragon's color:</h2>
+          <h2>
+            <span className={remoteColor}>Estragon's color:</span>
+          </h2>
           <ColorChoice setColorCallback={setRemoteColor} />
         </div>
 
       </section>
 
       <main>
-        <ChatLog 
-          entries={chatMsg} 
+        <ChatLog
+          entries={chatMsg}
           onLike={handleLike}
           localColor={localColor}
           remoteColor={remoteColor}
