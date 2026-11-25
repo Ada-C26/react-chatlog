@@ -15,6 +15,10 @@ const App = () => {
     setEntries(updatedEntries);
   };
 
+  const totalLikes = entries.reduce((total, entry) => {
+    return entry.liked ? total + 1 : total;
+  }, 0);
+
   return (
     <div id="App">
       <header>
