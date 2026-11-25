@@ -2,8 +2,8 @@ import PropTypes from 'prop-types';
 import './ChatLog.css';
 import ChatEntry from './ChatEntry';
 
-const ChatLog = (props) => {
-  const chatEntryComponents = props.entries.map( (entry) => <ChatEntry {...entry}></ChatEntry> );
+const ChatLog = ({ entries, onLikedChanged }) => {
+  const chatEntryComponents = entries.map( (entry) => <ChatEntry {...entry} onLikedChanged={onLikedChanged}></ChatEntry> );
 
   return (
     <div className="chat-log">
@@ -13,7 +13,8 @@ const ChatLog = (props) => {
 };
 
 ChatLog.propTypes = {
-  entries: PropTypes.array.isRequired
+  entries: PropTypes.array.isRequired,
+  onLikedChanged: PropTypes.func.isRequired
 };
 
 export default ChatLog;
