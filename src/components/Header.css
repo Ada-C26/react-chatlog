@@ -1,0 +1,33 @@
+#App header {
+  background-color: #222;
+  color: #fff;
+  padding-bottom: 0.5rem;
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+  text-align: center;
+  align-items: center;
+}
+
+#App header h1 {
+  font-size: 1.5em;
+  text-align: center;
+  display: inline-block;
+}
+
+#App header section {
+  background-color: #e0ffff;
+}
+
+/* Lighter shades so the names are readable on the dark header */
+#App header h1 .green { color: #5cd65c; }
+#App header h1 .blue { color: #66b3ff; }
+#App header h1 .purple { color: #d28cff; }
+#App header h1 .orange { color: #ffb84d; }
+#App header h1 .red { color: #ff6b6b; }
+#App header h1 .yellow { color: #ffff66; }
+
+/* keep the title names as normal text so the spaces around "and" stay */
+#App header h1 span {
+  display: inline;
+}

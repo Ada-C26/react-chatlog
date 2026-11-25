@@ -1,0 +1,12 @@
+.widget h3 {
+  margin: 1em 0;
+}
+
+.color-button {
+  font-size: 1.4em;
+  padding: 0.2em;
+}
+
+.color-button:hover {
+  transform: scale(1.2);
+}
