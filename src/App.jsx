@@ -1,14 +1,47 @@
 import './App.css';
+import ChatLog from './components/ChatLog';
+import messages from './data/messages.json';
+import { useState } from 'react';
 
 const App = () => {
+
+  const [entryData, setEntryData] = useState(messages);
+
+  const members = [...new Set(entryData.map((entry) => entry.sender))];
+  const localSender = members[0];
+
+  const handleLikeClick = (id) => {
+    setEntryData((currentEntries) =>
+      currentEntries.map((entry) =>
+        entry.id === id ? { ...entry, liked: !entry.liked } : entry
+      )
+    );
+  };
+
+  const calcNumberOfLikes = () => {
+    let numberOfLikes = 0;
+    for (const entry of entryData) {
+      if (entry.liked) {
+        numberOfLikes++;
+      }
+    }
+    return numberOfLikes;
+  };
+
   return (
     <div id="App">
       <header>
-        <h1>Application title</h1>
+        <h1>Chat between {members.join(' and ')}</h1>
+        <section>
+          <h2 id="heartWidget" className="widget">{calcNumberOfLikes()} ❤️s</h2>
+        </section>
       </header>
       <main>
-        {/* Wave 01: Render one ChatEntry component
-        Wave 02: Render ChatLog component */}
+        <ChatLog
+          entries={entryData}
+          onHandleLikeClick={handleLikeClick}
+          localSender={localSender}
+        />
       </main>
     </div>
   );
