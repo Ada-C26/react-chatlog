@@ -1,21 +1,41 @@
 import './ChatEntry.css';
+import TimeStamp from './TimeStamp';
+import PropTypes from 'prop-types';
 
-const ChatEntry = () => {
+const ChatEntry = (props) => {
+
+  const messageType = props.sender === 'Vladimir' ? 'local' : 'remote';
+  // console.log(props.sender);
+  // console.log(messageType);
+
+  const likeButtonClicked = () => {
+    props.onLikeToggle(props.id);
+  };
   return (
     // Replace the outer tag name with a semantic element that fits our use case
-    <replace-with-relevant-semantic-element className="chat-entry local">
-      <h2 className="entry-name">Replace with name of sender</h2>
+    <article className={`chat-entry ${messageType}`}>
+      <h2 className="entry-name">{props.sender}</h2>
       <section className="entry-bubble">
-        <p>Replace with body of ChatEntry</p>
-        <p className="entry-time">Replace with TimeStamp component</p>
-        <button className="like">🤍</button>
+        {/* Replace with body of ChatEntry</p> */}
+        <p>{props.body}</p>
+        {/* replace timestamp component */}
+        <p className="entry-time">
+          <TimeStamp time={props.timeStamp} />
+        </p>
+        <button className="like" onClick={likeButtonClicked}>
+          {props.liked ? '❤️' : '🤍'} </button>
       </section>
-    </replace-with-relevant-semantic-element>
+    </article>
   );
 };
 
+
 ChatEntry.propTypes = {
-  // Fill with correct proptypes
+  sender: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
+  timeStamp: PropTypes.string.isRequired,
+  liked: PropTypes.bool.isRequired,
+  onLikeToggle: PropTypes.func,
 };
 
 export default ChatEntry;
