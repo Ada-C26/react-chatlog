@@ -3,7 +3,7 @@ import TimeStamp from './TimeStamp';
 import PropTypes from 'prop-types';
 
 
-const ChatEntry = ({ sender, body, timeStamp }) => {
+const ChatEntry = ({ sender, body, timeStamp, id, liked, onLikeToggle}) => {
   return (
     // Replace the outer tag name with a semantic element that fits our use case
     <article className="chat-entry local">
@@ -12,7 +12,9 @@ const ChatEntry = ({ sender, body, timeStamp }) => {
         <p>{body}</p>
         <p className="entry-time"><TimeStamp time={timeStamp} />
         </p>
-        <button className="like">🤍</button>
+        <button className="like" onClick={() => onLikeToggle(id)}>
+          {liked ? '❤️' : '🤍'}
+        </button>
       </section>
     </article>
   );
@@ -23,6 +25,9 @@ ChatEntry.propTypes = {
   sender: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
   timeStamp: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
+  liked: PropTypes.bool.isRequired,
+  onLikeToggle: PropTypes.func.isRequired,
 };
 
 export default ChatEntry;
