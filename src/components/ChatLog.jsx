@@ -6,13 +6,14 @@ const ChatLog = ({ entries, setLikesCount, toggleLiked }) => {
   const processData = (data) => {
     const result = data.map((msg) => (
       <ChatEntry
+        key={msg.id}
         id={msg.id}
         sender={msg.sender}
         body={msg.body}
         timeStamp={msg.timeStamp}
-        setLikesCount ={setLikesCount}
-        toggleLiked={toggleLiked}
         liked={msg.liked}
+        setLikesCount={setLikesCount}
+        toggleLiked={toggleLiked}
       />
     ));
 
