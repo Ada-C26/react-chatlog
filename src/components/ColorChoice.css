@@ -1,0 +1,43 @@
+
+.color-choice {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.color-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.color-dot:hover {
+    transform: scale(1.2);
+}
+
+.color-dot.red {
+    background-color: #e12828;
+}
+
+.color-dot.orange {
+    background-color: orange;
+}
+
+.color-dot.yellow {
+    background-color: yellow;
+}
+
+.color-dot.green {
+    background-color: rgb(13, 139, 13);
+}
+
+.color-dot.blue {
+    background-color: blue;
+}
+
+.color-dot.purple {
+    background-color: rgb(108, 10, 108);
+}
