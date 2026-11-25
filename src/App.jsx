@@ -9,24 +9,18 @@ const App = () => {
   const [entries, setEntries] = useState(messages);
   const [colors, setColors] = useState(getDefaultColors(messages));
 
-  // responsible for updating the liked of the data
-  // NOT writing in the file..
-  const updateLikedEntries = (id) => {
-    return entries.map((entry) => {
-      if (entry.id === id) {
-        return { ...entry, liked: !entry.liked };
-      }
-      return entry;
-    });
-  };
-
+  // updates liked in state only (NOT writing in the file)
+  // uses the previous state so quick clicks don't overwrite each other
   const handleLikeToggle = (id) => {
-    const updatedEntries = updateLikedEntries(id);
-    setEntries(updatedEntries);
+    setEntries((prevEntries) =>
+      prevEntries.map((entry) =>
+        entry.id === id ? { ...entry, liked: !entry.liked } : entry
+      )
+    );
   };
 
   const handleColorChange = (person, color) => {
-    setColors({ ...colors, [person]: color });
+    setColors((prevColors) => ({ ...prevColors, [person]: color }));
   };
 
   return (

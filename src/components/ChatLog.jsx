@@ -35,11 +35,11 @@ ChatLog.propTypes = {
       sender: PropTypes.string.isRequired,
       body: PropTypes.string.isRequired,
       timeStamp: PropTypes.string.isRequired,
-      liked: PropTypes.bool,
+      liked: PropTypes.bool.isRequired,
     })
   ).isRequired,
   onLikeToggle: PropTypes.func.isRequired,
-  colors: PropTypes.objectOf(PropTypes.string),
+  colors: PropTypes.objectOf(PropTypes.string).isRequired,
 };
 
 export default ChatLog;
