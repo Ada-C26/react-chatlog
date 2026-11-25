@@ -2,14 +2,16 @@ import './ChatEntry.css';
 import PropTypes from 'prop-types';
 import TimeStamp from './TimeStamp';
 
-const ChatEntry = ({sender, body, timeStamp}) => {
+const ChatEntry = ({id, sender, body, timeStamp, liked, onLikeToggle}) => {
   return (
     <article className="chat-entry local">
       <h2 className="entry-name">{sender}</h2>
       <section className="entry-bubble">
         <p>{body}</p>
         <p className="entry-time"><TimeStamp time={timeStamp}/></p>
-        <button className="like">🤍</button>
+        <button className="like" onClick={() => onLikeToggle(id)}>
+          {liked ? '❤️' : '🤍'}
+        </button>
       </section>
     </article>
   );
@@ -21,6 +23,7 @@ ChatEntry.propTypes = {
   timeStamp: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
   liked: PropTypes.bool.isRequired,
+  onLikeToggle: PropTypes.func,
 };
 
 export default ChatEntry;
@@ -40,3 +43,11 @@ Wave 01: Presentational Component (ChatEntry)
 Wave 02: Container Component (ChatLog)
 - add id and liked to ChatEntry.propTypes
  */
+
+/*
+Wave 03: Event Handling and Lifting Up State (Likes)
+- in ChatEntry we need to add id, liked, and onLikeToggle call back
+- change button to include onClick={() => onLikeToggle(id)}
+- In the button show the hart with a ternary {liked ? '❤️' : '🤍'}
+- add the onLikeToggle to PropTypes
+*/

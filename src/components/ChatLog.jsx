@@ -2,7 +2,7 @@ import './ChatLog.css';
 import PropTypes from 'prop-types';
 import ChatEntry from './ChatEntry.jsx';
 
-const ChatLog = ({ entries }) => {
+const ChatLog = ({ entries, onLikeToggle }) => {
   // map entries to ChatEntry components
   const chatEntries = entries.map((entry) => (
     <ChatEntry
@@ -12,6 +12,7 @@ const ChatLog = ({ entries }) => {
       body={entry.body}
       timeStamp={entry.timeStamp}
       liked={entry.liked}
+      onLikeToggle={onLikeToggle}
     />
   ));
 
@@ -30,6 +31,7 @@ ChatLog.propTypes = {
       liked: PropTypes.bool.isRequired,
     })
   ).isRequired,
+  onLikeToggle: PropTypes.func,
 };
 
 export default ChatLog;
@@ -47,3 +49,10 @@ Wave 02 Container Component (ChatLog)
 
 - add property types with ChatLog.propTypes
  */
+
+/*
+Wave 03 Event Handling and Lifting Up State (Likes)
+- for the new onLikeToggle in app, needs to be passed into ChatLog with entries
+- and then added to the Chat Entry map entries
+- and add to propTypes underneath .isRequired... onLikeToggle: PropTypes.func
+*/
