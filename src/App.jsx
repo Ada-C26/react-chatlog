@@ -25,7 +25,7 @@ const App = () => {
     <div id="App">
       <header>
         <h1>Chat between {userNames.join(', ')}</h1>
-        <p className="total-likes">Total Likes: {totalLikes}</p>
+        <p className="total-likes">{totalLikes} ❤️s</p>
       </header>
       <main>
         <ChatLog entries={entries} onLike={handleLike} />
