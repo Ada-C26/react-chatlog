@@ -7,6 +7,9 @@ const App = () => {
 
   const [entryData, setEntryData] = useState(messages);
 
+  const members = [...new Set(entryData.map((entry) => entry.sender))];
+  const localSender = members[0];
+
   const handleLikeClick = (id) => {
     setEntryData((currentEntries) =>
       currentEntries.map((entry) =>
@@ -28,12 +31,15 @@ const App = () => {
   return (
     <div id="App">
       <header>
-        <h1>Chat Between Vladimir and Estragon</h1>
+        <h1>Chat Between {members.join(' and ')}</h1>
         <h2>{calcNumberOfLikes()} ❤️s</h2>
       </header>
       <main>
-        {/* Wave 02: Render ChatLog component*/}
-        <ChatLog entries={entryData} onHandleLikeClick={handleLikeClick}/>
+        <ChatLog
+          entries={entryData}
+          onHandleLikeClick={handleLikeClick}
+          localSender={localSender}
+        />
       </main>
     </div>
   );
