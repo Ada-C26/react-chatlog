@@ -32,7 +32,9 @@ const App = () => {
     <div id="App">
       <header>
         <h1>Chat Between {members.join(' and ')}</h1>
-        <h2>{calcNumberOfLikes()} ❤️s</h2>
+        <section>
+          <h2 id="heartWidget" className="widget">{calcNumberOfLikes()} ❤️s</h2>
+        </section>
       </header>
       <main>
         <ChatLog
