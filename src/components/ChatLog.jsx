@@ -11,6 +11,8 @@ const ChatLog = (props) => {
           sender={message.sender}
           body={message.body}
           timeStamp={message.timeStamp}
+          liked={message.liked}
+          onLike={props.onLike}
         />
       ))}
     </div>
@@ -18,7 +20,8 @@ const ChatLog = (props) => {
 };
 
 ChatLog.propTypes = {
-  entries: PropTypes.arrayOf(PropTypes.object).isRequired
+  entries: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onLike: PropTypes.func.isRequired
 };
 
 export default ChatLog;
