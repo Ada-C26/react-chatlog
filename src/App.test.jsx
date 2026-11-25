@@ -5,7 +5,7 @@ describe('Wave 03: clicking like button and rendering App', () => {
   test('that the correct number of likes is printed at the top', () => {
     // Arrange
     const { container } = render(<App />);
-    let buttons = container.querySelectorAll('button.like');
+    let buttons = container.querySelectorAll('button');
 
     // Act
     fireEvent.click(buttons[0]);
@@ -20,7 +20,7 @@ describe('Wave 03: clicking like button and rendering App', () => {
   test('liking then unliking messages correctly decreases the count of likes', () => {
     // Arrange
     const { container } = render(<App />);
-    let buttons = container.querySelectorAll('button.like');
+    let buttons = container.querySelectorAll('button');
 
     // Act
     // Activate 3 likes
@@ -37,10 +37,10 @@ describe('Wave 03: clicking like button and rendering App', () => {
     expect(likeCountText).not.toBeNull();
   });
 
-  test('clicking button toggles heart and does not affect other buttons', () => {
+  test('clicking button toggles heart and does not affect other buttons', async () => {
     // Arrange
-    const { container } = render(<App />);
-    const buttons = container.querySelectorAll('button.like');
+    render(<App />);
+    const buttons = await screen.findAllByRole('button');
     const firstButton = buttons[0];
     const lastButton = buttons[buttons.length - 1];
 
